@@ -51,7 +51,7 @@ def fetch_poster(movie_id):
     return full_path
 
 def recommend(movie):
-    index = record['sno'] for record in movies if record['title'] == movie
+    index = [record['sno'] for record in movies if record['title'] == movie]
     distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
     recommended_movie_names = []
     recommended_movie_posters = []
@@ -68,7 +68,7 @@ def recommend(movie):
 st.header('Movie Recommender System')
 movies = get_movies_data()
 similarity = get_similarity_data()
-
+st.write(movies[1:3])
 movie_list =  [record['title'] for record in movies]
 selected_movie = st.selectbox(
     "Type or select a movie from the dropdown",
