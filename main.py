@@ -68,7 +68,9 @@ def recommend(movie):
 st.header('Movie Recommender System')
 movies = get_movies_data()
 similarity = get_similarity_data()
-st.write(movies[1:3])
+st.write(movies[1])
+st.write(similarity[1])
+
 movie_list =  [record['title'] for record in movies]
 selected_movie = st.selectbox(
     "Type or select a movie from the dropdown",
