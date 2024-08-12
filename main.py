@@ -4,7 +4,7 @@ import streamlit as st
 @st.cache_resource
 def init_connection():
     connection_string = "mongodb+srv://Ayushi:{st.secrets['PASS']}@cluster0.aikbkzz.mongodb.net/?retryWrites=true&w=majority"
-    return MongoClient(connection_string)
+    return MongoClient(connection_string,server_api=ServerApi('1'), tls=True)
 client = init_connection()
 
 # Pull data from the collection.
