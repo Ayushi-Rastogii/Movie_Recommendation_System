@@ -3,8 +3,8 @@ import streamlit as st
 # Replace with your MongoDB connection string
 @st.cache_resource
 def init_connection():
-    return MongoClient("mongodb+srv://st.secrets.mongo.username:st.secrets.mongo.password@host/")
-
+    connection_string = "mongodb+srv://st.secrets.mongo.username:st.secrets.mongo.password@host/MoviesRS?retryWrites=true&w=majority"
+    return MongoClient(connection_string)
 client = init_connection()
 
 # Pull data from the collection.
