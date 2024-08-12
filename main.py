@@ -1,18 +1,28 @@
 from pymongo import MongoClient
 import streamlit as st
 # Replace with your MongoDB connection string
-client = MongoClient("mongodb+srv://Ayushi:Anuja%40108@cluster0.aikbkzz.mongodb.net/")
-db = client["MovieRS"]
-collection = db["pklsmov"]
+@st.cache_resource
+def init_connection():
+    return pymongo.MongoClient(**st.secrets["mongo"])
 
-def fetch_data():
-    return list(collection.find())
+client = init_connection()
+
+# Pull data from the collection.
+# Uses st.cache_data to only rerun when the query changes or after 10 min.
+@st.cache_data(ttl=600)
+def get_data():
+    db = client.MovieRS
+    items = db.pklsmov.find()
+    items = list(items)  # make hashable for st.cache_data
+    return items
+
+
 
 def main():
     st.title("MongoDB Streamlit App")
 
     # Fetch data from MongoDB
-    data = fetch_data()
+    data = get_data()
 
     # Display data in Streamlit
     st.write("Data from MongoDB:")
