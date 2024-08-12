@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import streamlit as st
+from pymongo.server_api import ServerApi
 # Replace with your MongoDB connection string
 @st.cache_resource
 def init_connection():
