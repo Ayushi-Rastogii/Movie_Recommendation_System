@@ -18,8 +18,8 @@ external_ip = get_external_ip()
 st.write("External IP:", external_ip)
 @st.cache_resource
 def init_connection():
-    connection_string = "mongodb+srv://st.secrets.username:st.secrets.password@cluster0.aikbkzz.mongodb.net/?retryWrites=true&w=majority&appName=Streamlit"
-    return MongoClient(connection_string)
+    connection_string = "mongodb+srv://st.secrets.username:"+st.secrets.password+"@cluster0.aikbkzz.mongodb.net/?retryWrites=true&w=majority&appName=Streamlit"
+    return MongoClient(connection_string,server_api=ServerApi('1'))
 client = init_connection()
 
 # Pull data from the collection.
