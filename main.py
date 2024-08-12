@@ -33,7 +33,7 @@ def get_movies_data():
     return items
 def get_similarity_data():
     db = client["MovieRS"]
-    collection = db["pklssim"]
+    collection = db["pklsim"]
     items = collection.find()
     #items = list(items)  # make hashable for st.cache_data
     return items
