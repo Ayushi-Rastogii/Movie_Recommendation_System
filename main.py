@@ -51,7 +51,7 @@ def fetch_poster(movie_id):
     return full_path
 
 def recommend(movie):
-    index = movies[movies['title'] == movie].index[0]
+    index = record['sno'] for record in movies if record['title'] == movie
     distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
     recommended_movie_names = []
     recommended_movie_posters = []
@@ -74,36 +74,36 @@ selected_movie = st.selectbox(
     "Type or select a movie from the dropdown",
     options=movie_list
 )
-#
-# if st.button('Show Recommendation'):
-#     recommended_movie_names,recommended_movie_posters = recommend(selected_movie)
-#     col1, col2, col3, col4, col5 = st.columns(5,gap='small',vertical_alignment='bottom')
-#     with col1:
-#         #st.text(recommended_movie_names[0])
-#         st.markdown(f"""
-#         <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[0]}</div>
-#         """, unsafe_allow_html=True)
-#         st.image(recommended_movie_posters[0])
-#     with col2:
-#         #st.text(recommended_movie_names[1])
-#         st.markdown(f"""
-#         <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[1]}</div>
-#         """, unsafe_allow_html=True)
-#         st.image(recommended_movie_posters[1])
-#
-#     with col3:
-#         #st.text(recommended_movie_names[2])
-#         st.markdown(f"""
-#         <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[2]}</div>
-#         """, unsafe_allow_html=True)
-#         st.image(recommended_movie_posters[2])
-#     with col4:
-#         st.markdown(f"""
-#         <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[3]}</div>
-#         """, unsafe_allow_html=True)
-#         st.image(recommended_movie_posters[3])
-#     with col5:
-#         st.markdown(f"""
-#         <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[4]}</div>
-#         """, unsafe_allow_html=True)
-#         st.image(recommended_movie_posters[4])
+
+if st.button('Show Recommendation'):
+    recommended_movie_names,recommended_movie_posters = recommend(selected_movie)
+    col1, col2, col3, col4, col5 = st.columns(5,gap='small',vertical_alignment='bottom')
+    with col1:
+        #st.text(recommended_movie_names[0])
+        st.markdown(f"""
+        <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[0]}</div>
+        """, unsafe_allow_html=True)
+        st.image(recommended_movie_posters[0])
+    with col2:
+        #st.text(recommended_movie_names[1])
+        st.markdown(f"""
+        <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[1]}</div>
+        """, unsafe_allow_html=True)
+        st.image(recommended_movie_posters[1])
+
+    with col3:
+        #st.text(recommended_movie_names[2])
+        st.markdown(f"""
+        <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[2]}</div>
+        """, unsafe_allow_html=True)
+        st.image(recommended_movie_posters[2])
+    with col4:
+        st.markdown(f"""
+        <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[3]}</div>
+        """, unsafe_allow_html=True)
+        st.image(recommended_movie_posters[3])
+    with col5:
+        st.markdown(f"""
+        <div style="width: 100%; white-space: pre-wrap;">{recommended_movie_names[4]}</div>
+        """, unsafe_allow_html=True)
+        st.image(recommended_movie_posters[4])
