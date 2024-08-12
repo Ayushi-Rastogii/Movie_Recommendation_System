@@ -3,7 +3,7 @@ import streamlit as st
 # Replace with your MongoDB connection string
 @st.cache_resource
 def init_connection():
-    connection_string = "mongodb://st.secrets.mongo.username:st.secrets.mongo.password@st.secrets.mongo.cluster.mongodb.net/MoviesRS?retryWrites=true&w=majority"
+    connection_string = "mongodb+srv://st.secrets.mongo.username:st.secrets.mongo.password@st.secrets.mongo.cluster.mongodb.net/MoviesRS?retryWrites=true&w=majority"
     return MongoClient(connection_string)
 client = init_connection()
 
