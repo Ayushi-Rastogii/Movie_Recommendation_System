@@ -2,6 +2,7 @@ import pickle as pkl
 from pymongo import MongoClient
 import streamlit as st
 from pymongo.server_api import ServerApi
+import json
 # Replace with your MongoDB connection string
 
 import requests
@@ -31,10 +32,10 @@ def get_movies_data():
     items = collection.find()
     items = list(items)  # make hashable for st.cache_data
     return items
-def get_similarity_data():
+def get_similarity_data(ind):
     db = client["MovieRS"]
     collection = db["pklsim"]
-    items = collection.find()
+    items = collection.find_one({"sno":ind})
     #items = list(items)  # make hashable for st.cache_data
     return items
 import pandas as pd
@@ -52,24 +53,27 @@ def fetch_poster(movie_id):
 
 def recommend(movie):
     index = [record['sno'] for record in movies if record['title'] == movie]
-    distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
+    sim=get_similarity_data(index[0])
+    sim.pop("sno")
+    sim.pop("_id")
+    sim=[sim[str(i)] for i in range(4805)]
+    distances = sorted(list(enumerate(sim)), key=lambda item: item[1], reverse=True)
     recommended_movie_names = []
     recommended_movie_posters = []
     for i in distances[1:6]:
         # fetch the movie poster
-
-        movie_id = movies.iloc[i[0]].id
+        k=[ko for ko in movies if ko['sno'] == i[0]]
+        k=k[0]
+        movie_id = k['id']
         recommended_movie_posters.append(fetch_poster(movie_id))
-        recommended_movie_names.append(movies.iloc[i[0]].title)
+        recommended_movie_names.append(k['title'])
 
     return recommended_movie_names,recommended_movie_posters
 
 
 st.header('Movie Recommender System')
 movies = get_movies_data()
-similarity = get_similarity_data()
-st.write(movies[1])
-st.write(similarity[1])
+
 
 movie_list =  [record['title'] for record in movies]
 selected_movie = st.selectbox(
