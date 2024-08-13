@@ -7,16 +7,16 @@ import json
 
 import requests
 
-# def get_external_ip():
-#     response = requests.get("https://api64.ipify.org?format=json")
-#     if response.status_code == 200:
-#         data = response.json()
-#         return data.get("ip")
-#     else:
-#         return "Unknown"
-#
-# external_ip = get_external_ip()
-# st.write("External IP:", external_ip)
+def get_external_ip():
+    response = requests.get("https://api64.ipify.org?format=json")
+    if response.status_code == 200:
+        data = response.json()
+        return data.get("ip")
+    else:
+        return "Unknown"
+
+external_ip = get_external_ip()
+st.write("External IP:", external_ip)
 @st.cache_resource
 def init_connection():
     connection_string = "mongodb+srv://"+st.secrets.username+":"+st.secrets.password+"@cluster0.aikbkzz.mongodb.net/?retryWrites=true&w=majority&appName=Streamlit"
