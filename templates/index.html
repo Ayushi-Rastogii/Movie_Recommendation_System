@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney+ Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="../static/images/logo.png" alt="" class="brand-logo">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="">TV</a></li>
+            <li class="nav-items"><a href="">Movies</a></li>
+            <li class="nav-items"><a href="">Sports</a></li>
+            <li class="nav-items"><a href="">Premium</a></li>
+        </ul>
+        <div class="right-container">
+            <input type="text" class="search-box" placeholder="search" id="fornamesake">
+            <button class="sub-btn">Subscribe</button>
+            <a href="" class="login-link">Login</a>
+        </div>
+    </nav>
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="movie-content">
+                <h1 class="movie-title">Loki</h1>
+                <p class="movie-des">The mercurial villain Loki resumes his role as God of Mischief in a new series that takes place after the events of "Avenger:Endgame."</p>
+
+                <ul class="genre">
+                    <li class="theme"><a href=""  class="themo">Action | </a></li>
+                    <li class="theme"><a href="" class="themo">Fantasy | </a></li>
+                    <li class="theme"><a href="" class="themo">Super Heroes | </a></li>
+                    <li class="theme"><a href="" class="themo">Fiction </a></li>
+                </ul>
+                <ul class="lango">
+                    <li class="lang"><a href="" class="lano">Hindi</a></li>
+                    <li class="lang"><a href="" class="lano">Tamil</a></li>
+                    <li class="lang"><a href="" class="lano">Telugu</a></li>
+                    <li class="lang"><a href="" class="lano">English Original</a></li>
+                </ul>
+
+                <button class="watch"> Subscribe to Watch</button>
+            </div>  
+            <img src="../static/images/slider%201.PNG" alt="">
+        </div>
+    </div>
+    <div class="video-card-container">
+        <div class="video-card">
+            <img src="../static/images/disney.PNG" alt="" class="video-card-image">
+            <video src="../static/videos/disney.mp4" muted loop class="card-video"></video>
+        </div>
+        <div class="video-card">
+            <img src="../static/images/pixar.PNG" alt="" class="video-card-image">
+            <video src="../static/videos/pixar.mp4" muted loop class="card-video"></video>
+        </div>
+        <div class="video-card">
+            <img src="../static/images/marvel.PNG" alt="" class="video-card-image">
+            <video src="../static/videos/marvel.mp4" muted loop class="card-video"></video>
+        </div>
+        <div class="video-card">
+            <img src="../static/images/star-wars.PNG" alt="" class="video-card-image">
+            <video src="../static/videos/star-war.mp4" muted loop class="card-video"></video>
+        </div>
+        <div class="video-card">
+            <img src="../static/images/geographic.PNG" alt="" class="video-card-image">
+            <video src="../static/videos/geographic.mp4" muted loop class="card-video"></video>
+        </div>
+    </div>
+    <div class="new-fnx">
+        <h1 class="title">Recommended For You</h1>
+        <div class="right-rec">
+            <select name="MRS" class="field" id="ret"><option value="Show Similar movies">Show Similar movies</option></select>
+            <button class="sub-btn" onclick= getRecommendation() id="Recommendations"> More Like this</button>
+        </div>
+    </div>
+
+        <div class="card-container">
+            <img src="../static/images/poster%202.png" alt="" class="card-img" id="poster1">
+            <div class="card-body">
+              <h2 class="name">Mulan</h2>
+              <h6 class="des">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+              </h6>  
+              <button class="watchlist">Add to watchlist</button>
+            </div>
+
+            <div class="card-container">
+                <img src="../static/images/poster%203.png" alt="" class="card-img" id="poster2">
+                <div class="card-body">
+                  <h2 class="name">The Falcon and the Winter Soldier</h2>
+                  <h6 class="des">
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+                  </h6>  
+                  <button class="watchlist">Add to watchlist</button>
+                </div>
+        </div>
+        <div class="card-container">
+            <img src="../static/images/poster%204.png" alt="" class="card-img" id="poster3">
+            <div class="card-body">
+              <h2 class="name">Avengers: The Endgame</h2>
+              <h6 class="des">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+              </h6>  
+              <button class="watchlist">Add to watchlist</button>
+            </div>
+        </div> 
+        <div class="card-container">
+            <img src="../static/images/poster%206.png" alt="" class="card-img" id="poster4">
+            <div class="card-body">
+              <h2 class="name">Avengers</h2>
+              <h6 class="des">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+              </h6>  
+              <button class="watchlist">Add to watchlist</button>
+            </div>
+             
+    </div>
+    <div class="card-container">
+        <img src="../static/images/poster%201.png" alt="" class="card-img" id="poster5">
+        <div class="card-body">
+          <h2 class="name">Loki</h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>  
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+    <div class="card-container">
+        <img src="../static/images/poster%207.png" alt="" class="card-img" id="poster6">
+        <div class="card-body">
+          <h2 class="name">Pirates of the Caribbean: On Stranger Tides </h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>  
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+    <div class="card-container">
+        <img src="../static/images/poster%208.png" alt="" class="card-img" id="poster7">
+        <div class="card-body">
+          <h2 class="name"> Soul</h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>  
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+       <div class="card-container">
+        <img src="../static/images/poster%2010.png" alt="" class="card-img" id="poster8">
+        <div class="card-body">
+          <h2 class="name">Luca</h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>  
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+    </div>
+        <div class="new-fnx">
+        <h1 class="title">Popular Shows</h1>
+    </div>
+
+        <div class="card-container">
+            <img src="../static/images/poster%209.png" alt="" class="card-img">
+            <div class="card-body">
+              <h2 class="name">Mulan</h2>
+              <h6 class="des">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+              </h6>
+              <button class="watchlist">Add to watchlist</button>
+            </div>
+
+            <div class="card-container">
+                <img src="../static/images/poster%2010.png" alt="" class="card-img">
+                <div class="card-body">
+                  <h2 class="name">The Falcon and the Winter Soldier</h2>
+                  <h6 class="des">
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+                  </h6>
+                  <button class="watchlist">Add to watchlist</button>
+                </div>
+        </div>
+        <div class="card-container">
+            <img src="../static/images/poster%2011.png" alt="" class="card-img">
+            <div class="card-body">
+              <h2 class="name">Avengers: The Endgame</h2>
+              <h6 class="des">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+              </h6>
+              <button class="watchlist">Add to watchlist</button>
+            </div>
+        </div>
+        <div class="card-container">
+            <img src="../static/images/poster%2012.png" alt="" class="card-img">
+            <div class="card-body">
+              <h2 class="name">Avengers</h2>
+              <h6 class="des">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+              </h6>
+              <button class="watchlist">Add to watchlist</button>
+            </div>
+
+    </div>
+    <div class="card-container">
+        <img src="../static/images/poster%2013.png" alt="" class="card-img">
+        <div class="card-body">
+          <h2 class="name">Loki</h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+    <div class="card-container">
+        <img src="../static/images/poster%2014.jpg" alt="" class="card-img">
+        <div class="card-body">
+          <h2 class="name">Pirates of the Caribbean: On Stranger Tides </h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+    <div class="card-container">
+        <img src="../static/images/poster%205.png" alt="" class="card-img">
+        <div class="card-body">
+          <h2 class="name"> Soul</h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+       <div class="card-container">
+        <img src="../static/images/poster%2015.jpg" alt="" class="card-img">
+        <div class="card-body">
+          <h2 class="name">Luca</h2>
+          <h6 class="des">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolore.
+          </h6>
+          <button class="watchlist">Add to watchlist</button>
+        </div>
+    </div>
+    </div>
+    <footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <ul class="footer-links">
+                <li><a href="">About Us</a></li>
+                <li><a href="">Terms of Service</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-center">
+            <div class="social-media">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p>&copy; 2024 Hotstar Clone. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
