@@ -14,10 +14,6 @@
     {
       "src": "/static/video/(.*)",
       "dest": "/static/video/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "main.py"
     }
   ],
   "env": {
