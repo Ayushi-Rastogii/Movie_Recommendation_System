@@ -11,5 +11,9 @@
       "src": "/(.*)",
       "dest": "main.py"
     }
-  ]
+  ],
+  "env": {
+    "username": "Ayushi",
+    "password": "Anuja%40108"
+  }
 }
