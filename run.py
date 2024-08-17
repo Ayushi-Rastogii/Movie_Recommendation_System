@@ -28,27 +28,9 @@ client = LocalProxy(lambda: mongo.db)
 def home():
     return render_template('index.html')
 
-# @app.route('/data')
-# def serve():
-#     dbms = client["MovieRS"]
-#     collections = dbms["pklsmov"]
-#     data=list(collections.find())
-#     for item in data:
-#         item['_id'] = str(item['_id'])  # Convert ObjectId to string
-#     # Convert MongoDB documents to a list of dictionaries
-#     return data
-# @app.route('/data', methods=['GET'])
-# def get_data():
-#     data = [
-#         {'_id': '1', 'title': 'Option 1'},
-#         {'_id': '2', 'title': 'Option 2'},
-#         # Add more data as needed
-#     ]
-#     return jsonify(data)
 def get_similarity_data(ind):
     collection = client.pklsim
     items = collection.find_one({"sno":ind})
-    #items = list(items)  # make hashable for st.cache_data
     return items
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
@@ -57,16 +39,7 @@ def fetch_poster(movie_id):
     poster_path = data['poster_path']
     full_path = "https://image.tmdb.org/t/p/w500/" + poster_path
     return full_path
-# @app.route('/')
-# def mongo_connect_check():
-#     try:
-#         # Attempt to fetch data from a collection
-#         db = client["MovieRS"]
-#         collections = db["pklsmov"]
-#         collections.find()
-#         return "Connected to MongoDB successfully!"
-#     except Exception as e:
-#         return f"Not Connected to MongoDB successfully! {e}"
+
 def get_sno(movie):
     collection = client.pklsmov
     items = collection.find_one({"title":movie})
@@ -124,11 +97,6 @@ def get_recommendations():
         print(f"Error: {e}")
         return jsonify({"error": "Internal Server Error", "message": str(e)}), 500
 
-# @app.route('/recommend', methods=['POST'])
-# def get_recommendations(movie):
-#     # Call the recommend function
-#     recommendations = recommend(movie)
-#     return jsonify(recommendations)
 @app.route('/api/data', methods=['GET'])
 def get_movies_data():
     collection = client.pklsmov  # Access the collection
@@ -139,14 +107,6 @@ def get_movies_data():
         item['_id'] = str(item['_id'])
 
     return jsonify(items_list)
-    # for item in items:
-    #     item['_id'] = str(item['_id'])  # Convert ObjectId to string
-    # return jsonify(items)
-# Example route
-# @app.route('/')
-# def home():
-#     return "Flask application with secret.toml"
-
 
 if __name__ == "__main__":
-    app.run(debug=True,port=8000)
+    app.run(debug=false,host='0.0.0.0')
