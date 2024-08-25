@@ -2,7 +2,7 @@
 The Movie Recommendation System is a project that presents a Disney+ Hotstar clone for the look and feel of the website with enhanced functionality. It provides recommendations based on the selected movie in the "Recommendations for You" section. By clicking on the "More Like This" button, users receive suggestions for movies with similar genres, themes, and ideas. This functionality is powered by a machine learning model over [TMDB 5000 Movie Dataset](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata) 
 
 ## Deployment Link
-The project is deployed using **[Vercel](https://vercel.com/)**. You can access the deployed website [here](https://movie-recommendation-system-mou64oicm-ayushi-rastogiis-projects.vercel.app/)
+The project is deployed using **[Vercel](https://vercel.com/)**. You can access the deployed website [here](https://movie-recommendation-system-klf6ul7e9-ayushi-rastogiis-projects.vercel.app/)
 
 ## Technologies Used
 
